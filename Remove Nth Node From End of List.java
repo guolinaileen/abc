@@ -13,17 +13,17 @@ public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        int counter=0; 
+        if(head==null || n==0) return head; 
         ListNode runner=head; 
-        while(counter!=n)
+        while(n!=0)
         {
-            runner=runner.next; counter++; 
+            runner=runner.next; n--; 
         }
         if(runner==null) return head.next; 
         ListNode cur=head; 
         while(runner.next!=null)
         {
-            runner=runner.next;
+            runner=runner.next; 
             cur=cur.next; 
         }
         cur.next=cur.next.next; 
