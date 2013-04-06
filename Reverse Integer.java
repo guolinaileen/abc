@@ -8,21 +8,13 @@ public class Solution {
             negative=true; 
             x=-x; 
         }
-        int counter=1; 
-        while(x/counter!=0)
-        {
-            counter*=10; 
-        }
-        if(counter==10) return x; 
-        else counter/=10; 
         int result=0; 
         while(x!=0)
         {
-            if(Integer.MAX_VALUE/counter<x%10) 
-            return negative? Integer.MIN_VALUE: Integer.MAX_VALUE; 
-            result+=x/counter+ (x%10 *counter);
-            x=(x%counter)/10;
-            counter/=10; 
+            if(Integer.MAX_VALUE/10<result) 
+             return negative? Integer.MIN_VALUE: Integer.MAX_VALUE; 
+            result=result*10+ x%10;
+            x/=10; 
         }
         return negative? -result: result; 
     }
