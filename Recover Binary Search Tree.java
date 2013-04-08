@@ -7,6 +7,9 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+ /*
+ in order tranvserse 
+ */
 public class Solution {
     TreeNode n1; 
     TreeNode n2; 
