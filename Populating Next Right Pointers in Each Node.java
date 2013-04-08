@@ -11,16 +11,21 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(root==null) return ; 
-        TreeLinkNode L=root.left;
-        TreeLinkNode R=root.right;
-        if(L!=null) L.next=R; 
-        if(R!=null && root.next!=null)
+        TreeLinkNode r=root;
+        while(r!=null)
         {
-            TreeLinkNode next=root.next;
-            R.next=next.left;
+            TreeLinkNode l=r; 
+            while(l!=null)
+            {
+                if(l.left!=null) l.left.next=l.right;
+                if(l.right!=null &&l.next!=null )
+                {
+                    l.right.next=l.next.left;
+                }
+                l=l.next; 
+            }
+            r=r.left;
         }
-        connect(root.left);
-        connect(root.right);
-        connect(root.next);
+
     }
 }
