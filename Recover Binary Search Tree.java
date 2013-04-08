@@ -29,6 +29,9 @@ public class Solution {
         inOrder(root.left);
         if(pre!=null && pre.val>root.val)
         {
+            /*
+            start from n2=root; 
+            */
             n2=root; 
             if(n1==null)
             {
