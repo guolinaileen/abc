@@ -13,10 +13,11 @@ public static void main(String[] args) {
 		c.left=d; 
 		c.right=e; 
 		d.left=f; 
-		inOrderTranverse(a);
+		preOrderTranverse(a);
+		inOrderTranverse(a)
 	}
 	
-	static void inOrderTranverse(TreeNode root)
+	static void preOrderTranverse(TreeNode root)
 	{
 		Stack<TreeNode> stack=new Stack<TreeNode>();
 		while(root!=null || !stack.isEmpty())
@@ -32,4 +33,24 @@ public static void main(String[] args) {
 			}
 		}
 	}
+	
+	static void inOrderTranverse(TreeNode root)
+	{
+		Stack<TreeNode> stack=new Stack<TreeNode>();
+		while(root!=null || !stack.isEmpty())
+		{
+			if(root!=null)
+			{
+				stack.push(root);
+				root=root.left; 
+			}else
+			{
+				root=stack.pop();
+				System.out.println(root.val);
+				root=root.right; 
+			}
+		}
+	}
+	
+
 }
