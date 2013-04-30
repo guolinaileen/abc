@@ -14,7 +14,8 @@ public static void main(String[] args) {
 		c.right=e; 
 		d.left=f; 
 		preOrderTranverse(a);
-		inOrderTranverse(a)
+		inOrderTranverse(a); 
+		postOrderTranverse(a);
 	}
 	
 	static void preOrderTranverse(TreeNode root)
@@ -51,6 +52,32 @@ public static void main(String[] args) {
 			}
 		}
 	}
-	
+	static void postOrderTranverse(TreeNode root)
+	{
+		if(root==null) return;
+		Stack<TreeNode> stack=new Stack<TreeNode>();
+		stack.push(root);
+		TreeNode prevNode=null; 
+		while(!stack.isEmpty())
+		{
+			TreeNode curNode=stack.peek();
+			if(prevNode==null || prevNode.left==curNode || prevNode.right==curNode)
+			{
+				if(curNode.left!=null)
+					stack.push(curNode.left);
+				else if(curNode.right!=null)
+					stack.push(curNode.right);
+			}else if(curNode.left==prevNode)
+			{
+				if(curNode.right!=null)
+					stack.push(curNode.right);
+			}else
+			{
+				System.out.println(curNode.val);
+				stack.pop(); 
+			}
+			prevNode=curNode;
+		}
+	}
 
 }
