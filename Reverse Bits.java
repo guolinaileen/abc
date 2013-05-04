@@ -6,8 +6,6 @@ public class Interpreter {
     public static void main(String[] args) {
         // Start typing your code here...
         System.out.println(reverse(14));
-        
-        
     }
     public static int reverse(int x)
     {
