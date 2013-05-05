@@ -27,3 +27,11 @@ public class Solution {
          return result; 
     }
 }
+/*
+if we meet dup values, we start from the previous starting point
+e.g. [1, 1, 2, 2]
+[]  [1]
+    [1, 1]
+[2] [1, 2]  [1, 1, 2]
+[2, 2]  [1, 2, 2]   [1, 1, 2, 2]
+*/
