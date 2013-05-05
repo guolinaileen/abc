@@ -9,6 +9,12 @@ public class Solution {
         // DO NOT write main() function
         if(s1.length()!=s2.length()) return false; 
         if(s1.equals(s2)) return true; 
+        /*
+        scramble string 3D check
+        the first parameter is the starting point of s1, 
+        the second parameter is the starting point of s2, 
+        the third parameter is the length of the string
+        */
         boolean [][][]check=new boolean [s1.length()][s2.length()][s1.length()+1];
         for(int i=s1.length()-1; i>=0; i--)
         {
