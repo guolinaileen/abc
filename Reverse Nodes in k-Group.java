@@ -20,6 +20,7 @@ public class Solution {
         ListNode pre=dummy; 
         while(head!=null)
         {
+            /*smart point is using %*/
             if(counter%k==0)
             {
                 pre=reverse(pre, head);
