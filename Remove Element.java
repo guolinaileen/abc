@@ -7,6 +7,7 @@ public class Solution {
         {
             if(A[i]==elem)
             {
+                /*if the order doesn't matter, shorten the length directly*/
                 A[i]=A[--length]; 
             }else
             {
