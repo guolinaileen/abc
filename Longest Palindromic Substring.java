@@ -6,10 +6,11 @@ public class Solution {
         String original=s; 
         s=preProcess(s);
         int c=0, l=0, r=0; 
+        /*how many matching characters at the center c */
         int [] p=new int[s.length()];
         for(int i=0; i<s.length(); i++)
         {
-            int i_prime=c-(i-c); 
+            int i_prime=c-(i-c); /*i_prime is located at left and i is located at right */
             if(r>i && i_prime>=0)
             {
                 if(p[i_prime]<=r-i) p[i]=p[i_prime];
