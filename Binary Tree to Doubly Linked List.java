@@ -1,4 +1,6 @@
-  static void tree2doublylinkedlist(TreeNode root)
+TreeNode pre; 
+TreeNode head; 
+static void tree2doublylinkedlist(TreeNode root)
 	{
 		if(root==null) return ; 
 		tree2doublylinkedlist(root.left);
