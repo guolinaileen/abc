@@ -3,51 +3,47 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         StringBuffer sb=new StringBuffer(); 
-        int m=num/1000; 
-        while(m!=0)
+        //'M', 1000; 'D', 500; 'C', 100 ; 'L', 50; 'X',10; 'V', 5; 'I', 1 
+        //I、X、C
+        int Mn=num/1000;
+        while(Mn!=0)
         {
-            sb.append("M"); m--; 
+            sb.append("M"); Mn--; 
         }
         num=num%1000; 
-        sb.append(stringHelper(num/100, "C", "D", "M"));
+        sb.append(intToRoman("M", "D", "C", num/100));
         num=num%100; 
-        sb.append(stringHelper(num/10, "X", "L", "C"));
-        num=num%10;
-        sb.append(stringHelper(num, "I", "V", "X"));
+        sb.append(intToRoman("C", "L", "X", num/10));
+        num=num%10; 
+        sb.append(intToRoman("X", "V", "I", num));
         return sb.toString(); 
     }
-    String stringHelper(int num, String one, String five, String ten)
+    
+    String intToRoman(String ten, String five, String one, int num)
     {
-        String result=""; 
+        StringBuffer result=new StringBuffer(); 
+        num=num%10; 
         switch(num)
         {
-            case 1: case 2: case 3:
+            case 9:
+                result.append(one+ten); break; 
+            case 5: case 6: case 7: case 8: 
+                result.append(five);
+                num-=5; 
                 while(num!=0)
                 {
-                    result+=one; num--; 
+                    result.append(one); num--; 
                 }
                 break; 
             case 4: 
-                result+=one+five; 
-                break; 
-            case 5: 
-                result+=five; 
-                break; 
-            case 6: case 7: case 8:
-                result+=five;
-                num-=5;
+                result.append(one+five); break; 
+            case 3: case 2: case 1:
                 while(num!=0)
                 {
-                    result+=one; num--; 
+                    result.append(one); num--; 
                 }
                 break; 
-            case 9: 
-                result+=one+ten;
-                break; 
-            case 10: 
-                result+=ten;
-                break; 
         }
-        return result; 
+        return result.toString(); 
     }
 }
