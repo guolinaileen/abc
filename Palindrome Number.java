@@ -3,16 +3,20 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(x<0) return false; 
-        int counter=1; 
-        while(x/counter>=10)
+        int length=1; 
+        int tempX=x; 
+        while(tempX/10!=0)
         {
-            counter*=10; 
+            length*=10; 
+            tempX=tempX/10; 
         }
         while(x!=0)
         {
-            if(x/counter!=x%10) return false; 
-            x=(x%counter)/10; 
-            counter/=100; 
+            int left=x/length;
+            int right=x%10;
+            if(left!=right) return false; 
+            x=(x-left*length)/10; 
+            length/=100; 
         }
         return true; 
     }
