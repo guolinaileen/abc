@@ -13,43 +13,36 @@ public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(k<=1) return head; 
+        if(k==0||k==1||head==null) return head; 
+        int count=0;
         ListNode dummy=new ListNode(0);
-        int counter=1; 
         dummy.next=head; 
-        ListNode pre=dummy; 
+        ListNode pre=dummy;
         while(head!=null)
         {
-            /*smart point is using %*/
-            if(counter%k==0)
+            count++; 
+            ListNode next=head.next; 
+            if(count%k==0)
             {
-                pre=reverse(pre, head);
-                head=pre;
+                pre=reverse(pre, head.next);
             }
-            head=head.next; 
-            counter++; 
+            head=next; 
         }
-        return dummy.next; 
+        return dummy.next;
     }
-    //return the end
-    ListNode reverse(ListNode pre, ListNode end)
+    ListNode reverse(ListNode pre, ListNode next)
     {
-        ListNode runner=pre.next.next;
-        ListNode preNext=null;
-        ListNode last=pre.next; 
-        
-        while(runner!=end)
+        ListNode preNode=pre.next; 
+        ListNode second=pre.next.next; 
+        while(second!=next)
         {
-            preNext=pre.next;
-            ListNode next=runner.next;
-            pre.next=runner; 
-            runner.next=preNext;
-            runner=next; 
+            ListNode first=pre.next; 
+            ListNode nextNode=second.next; 
+            pre.next=second;
+            second.next=first; 
+            preNode.next=nextNode; 
+            second=nextNode; 
         }
-        preNext=pre.next; 
-        last.next=runner.next; 
-        pre.next=runner; 
-        runner.next=preNext; 
-        return last; 
+        return preNode; 
     }
 }
