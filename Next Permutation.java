@@ -2,37 +2,39 @@ public class Solution {
     public void nextPermutation(int[] num) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(num.length==0) return ; 
-        for(int i=num.length-1; i>0; i--)
+        int index=num.length-1; 
+        if(index<=0) return; 
+        while(index>0)
         {
-            if(num[i]>num[i-1])
+            if(num[index]>num[index-1])
             {
-                for(int j=num.length-1; j>=i; j--)
+                int right=num.length-1; 
+                while(num[right]<=num[index-1])
                 {
-                    if(num[j]>num[i-1])
-                    {
-                        int temp=num[i-1]; 
-                        num[i-1]=num[j]; 
-                        num[j]=temp; 
-                        break; 
-                    }
+                    right--;
                 }
-                reverse(num, i, num.length-1);
-                return ; 
+                swap(num, index-1, right);
+                reverse(num, index, num.length-1);
+                break; 
             }
+            index--; 
         }
-        reverse(num, 0, num.length-1); 
+        if(index==0) reverse(num, 0, num.length-1);
         
     }
-    void reverse(int [] num, int start, int end)
+    void reverse(int []num, int i, int j)
     {
-        while(start<end)
+        while(i<j)
         {
-            int temp=num[start];
-            num[start]=num[end];
-            num[end]=temp; 
-            start++; 
-            end--; 
+            swap(num, i, j);
+            i++; 
+            j--; 
         }
+    }
+    void swap(int [] num, int i, int j)
+    {
+        int temp=num[j];
+        num[j]=num[i]; 
+        num[i]=temp; 
     }
 }
