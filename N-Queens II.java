@@ -28,9 +28,6 @@ public class Solution {
         for(int i=0; i<rowLine; i++)
         {
             if(row[i]==col) return false; 
-        }
-        for(int i=0; i<rowLine; i++)
-        {
             if(Math.abs(i-rowLine)==Math.abs(row[i]-col)) return false; 
         }
         return true; 
