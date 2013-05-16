@@ -6,14 +6,11 @@ public class Solution {
         String result=strs[0];
         for(int i=1; i<strs.length; i++)
         {
-            int length=Math.min(result.length(), strs[i].length()); 
-            for(int j=0 ; j<=length; j++)
+            if(strs[i].length()<result.length()) result=result.substring(0, strs[i].length());
+            for(int j=0; j<result.length(); j++)
             {
-                if(j==length) result=result.substring(0, j);
-                else
                 if(result.charAt(j)!=strs[i].charAt(j))
                 {
-                    if(j==0) return ""; 
                     result=result.substring(0, j); break; 
                 }
             }
