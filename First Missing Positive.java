@@ -2,24 +2,27 @@ public class Solution {
     public int firstMissingPositive(int[] A) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(A.length==0) return 1; 
-        int n=A.length+1; 
+        int length=A.length+1;
         for(int i=0; i<A.length; i++)
         {
-            if(A[i]<=0) A[i]=n; 
-        }
-        for(int i=0; i<A.length; i++)
-        {
-            int val=Math.abs(A[i]);
-            if(val<n)
+            if(A[i]<=0)
             {
-                A[val-1]=-Math.abs(A[val-1]);
+                A[i]=length; 
             }
         }
         for(int i=0; i<A.length; i++)
         {
-            if(A[i]>0) return i+1; 
+            if(A[i]>=length||A[i]<0||A[A[i]-1]==-A[i]) continue; 
+            int temp=A[i];
+            A[i]=A[temp-1]; 
+            A[temp-1]=-temp; 
+            i--; 
         }
-        return n; 
+        for(int i=0; i<A.length; i++)
+        {
+            if(A[i]!=-(i+1))
+            return i+1; 
+        }
+        return length;
     }
 }
