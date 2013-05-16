@@ -13,31 +13,30 @@ public class Solution {
     public ListNode rotateRight(ListNode head, int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(head==null || n==0) return head;
-        if(head.next==null) return head; 
-        ListNode runner=head; 
-        int counter=1; 
-        while(counter<n)
+        if(head==null||n==0) return head; 
+        int length=0;
+        ListNode run=head; 
+        while(run!=null)
         {
-            if(runner.next==null) runner=head; 
-            else runner=runner.next; 
-            counter++; 
+            length++; 
+            run=run.next; 
         }
-        ListNode cur=head; 
-        ListNode pre=null; 
-        while(runner.next!=null)
+        n=n%length;
+        if(n==0) return head; 
+        run=head; 
+        while(run!=null && n!=0)
         {
-            pre=cur; 
-            cur=cur.next; 
-            runner=runner.next;
+            run=run.next; n--; 
         }
-        if(pre!=null) pre.next=null; 
-        ListNode newHead=cur;
-        while(cur.next!=null)
+        if(run==null) return head; 
+        ListNode pre=head; 
+        while(run.next!=null)
         {
-            cur=cur.next; 
+            pre=pre.next; run=run.next; 
         }
-        if(newHead!=head) cur.next=head; 
+        ListNode newHead=pre.next; 
+        run.next=head; 
+        pre.next=null; 
         return newHead; 
     }
 }
