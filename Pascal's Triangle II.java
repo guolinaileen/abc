@@ -1,20 +1,24 @@
+//O(k) space
 public class Solution {
     public ArrayList<Integer> getRow(int rowIndex) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        ArrayList<Integer> result=new ArrayList<Integer>();
-        if(rowIndex<0) return result; 
-        result.add(1); 
-        for(int i=0; i<rowIndex; i++)
+        ArrayList<Integer> result=new ArrayList<Integer>(); 
+        result.add(1);
+        if(rowIndex==0) return result; 
+        result.add(1);
+        if(rowIndex==1) return result; 
+        for(int i=2; i<=rowIndex; i++)
         {
-            ArrayList<Integer> subResult=new ArrayList<Integer>();
-            subResult.add(1);
-            for(int j=0; j<result.size()-1; j++)
+            int temp=1; 
+            for(int j=1; j<i; j++)
             {
-                subResult.add(result.get(j)+result.get(j+1));
+                int first=temp; 
+                temp=result.get(j); 
+                result.remove(j);
+                result.add(j, first+temp);
             }
-            subResult.add(1);
-            result=subResult;
+            result.add(1);
         }
         return result; 
     }
