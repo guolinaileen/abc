@@ -15,7 +15,7 @@ public class Solution {
         HashMap<Integer, Integer> map=new HashMap<Integer, Integer>();
         for(int i=0; i<inorder.length; i++)
         {
-            map.put(inorder[i], i); 
+            map.put(inorder[i], i); //map value and index, so we can easy find the right one. 
         }
         return find(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1, map);
     }
