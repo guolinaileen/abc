@@ -9,6 +9,28 @@
  *     }
  * }
  */
+ 
+ /*
+ 
+     		Comparator<Integer> comp=new Comparator<Integer>()
+			{
+				public int compare(Integer a, Integer b)
+				{
+					return a==b? 0: (a>b? 1: -1) ; 
+				}
+			}; //create a min heap
+            
+            Comparator<Point> comp=new Comparator<Point>()
+			{
+				public int compare(Point a, Point b)
+				{
+					  double aToO=getDistance(a); 
+					  double bToO=getDistance(b); 
+					  return aToO==bToO? 0: (aToO<bToO? 1: -1);
+				}
+			 }; //create a max heap, 
+            
+ */
 public class Solution {
     public ListNode mergeKLists(ArrayList<ListNode> lists) {
         // Start typing your Java solution below
@@ -23,6 +45,7 @@ public class Solution {
             }
         }; //minheap
         PriorityQueue<ListNode> pq=new PriorityQueue<ListNode>(lists.size(), comp);
+        //create a priorityQueue by using size and comparator
         for(int i=0; i<lists.size(); i++)
         {
             ListNode node=lists.get(i);
