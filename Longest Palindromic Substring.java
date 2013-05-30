@@ -13,7 +13,7 @@ public class Solution {
             int i_prime=c-(i-c); /*i_prime is located at left and i is located at right */
             if(r>i && i_prime>=0)
             {
-                if(p[i_prime]<=r-i) p[i]=p[i_prime];
+                if(p[i_prime]<=r-i) p[i]=p[i_prime]; //careful about here: check p[i_prime] before assigning the value
             }
             while(i-p[i]-1>=0 && i+p[i]+1<s.length() &&  s.charAt(i-p[i]-1)==s.charAt(i+p[i]+1))
             {
