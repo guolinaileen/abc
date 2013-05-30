@@ -1,33 +1,41 @@
 public class Solution {
-    public boolean search(int[] A, int target) {
+    public int search(int[] A, int target) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(A.length==0) return false; 
-        return searchRotate( A, 0, A.length-1, target); 
+        return find(A, target, 0, A.length-1); 
     }
-    boolean searchRotate(int [] A, int start, int end, int target)
+    int find(int[] A, int target, int start, int end)
     {
-        if(start<=end)
+        if(start>end) return -1; 
+        int mid=start+(end-start)/2; 
+        if(A[mid]==target)
         {
-            int mid=start+(end-start)/2;
-            if(A[mid]==target)
-            return true; 
-            if(A[mid]<target)
+            return mid; 
+        }
+        else if(A[mid]<target)
+        {
+            if(A[end]>=A[mid])
             {
-                if(A[start]<A[mid])
-                return searchRotate(A, mid+1, end, target);
-                boolean temp=searchRotate(A, mid+1, end, target);
-                if(temp) return temp; 
-                return searchRotate(A, start, mid-1, target);
+                int left=find(A, target, start, mid-1);
+                if(left!=-1) return left; 
+                int right=find(A, target, mid+1, end);
+                return right; 
             }else
-            { 
-                if(A[end]>A[mid]) 
-                return searchRotate(A, start, mid-1, target);
-                boolean temp=searchRotate(A, start, mid-1, target);
-                if(temp) return temp; 
-                return searchRotate(A,mid+1, end, target);
+            {
+                return find(A, target, mid+1, end);
+            }
+        }else
+        {
+            if(A[end]<=A[mid])
+            {
+                int left=find(A, target, start, mid-1);
+                if(left!=-1) return left; 
+                int right=find(A, target, mid+1, end);
+                return right; 
+            }else
+            {
+                return find(A, target, start, mid-1);
             }
         }
-        return false; 
     }
 }
