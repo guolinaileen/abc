@@ -2,6 +2,9 @@ public class Solution {
     public ArrayList<String> letterCombinations(String digits) {
         // Start typing your Java solution below
         // DO NOT write main() function
+        /*
+        brillant idea to store those values into string
+        */
         String [] arrays=new String[10];
         arrays[2]="abc"; 
         arrays[3]="def";
