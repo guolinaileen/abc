@@ -10,6 +10,15 @@ public class Solution {
             length*=10; 
             tempX=tempX/10; 
         }
+        /*
+        old strategy will cause overflow: 
+        int d=1; 
+        while(x/d!=0)
+        {
+        d*=10; 
+        }
+        d/=10; 
+        */
         while(x!=0)
         {
             int left=x/length;
