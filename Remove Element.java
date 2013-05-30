@@ -36,7 +36,6 @@ public class Solution {
                 index++; 
             }
         }
-        if(end!=A.length-1) A[end+1]='\0'; 
         return end+1; 
     }
 }
