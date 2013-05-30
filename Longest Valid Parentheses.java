@@ -4,6 +4,7 @@ public class Solution {
         // DO NOT write main() function
        if(s.length()==0) return 0; 
        Stack<Integer> stack=new Stack<Integer>(); 
+       //create left to indicate the leftmost value
        int left=0; 
        int max=0; 
        for(int i=0; i<s.length(); i++)
