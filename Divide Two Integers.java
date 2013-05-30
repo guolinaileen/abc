@@ -2,6 +2,10 @@ public class Solution {
     public int divide(int dividend, int divisor) {
         // Start typing your Java solution below
         // DO NOT write main() function
+        /*using long type is because Math.abs(Integer.MIN_VALUE) is still Integer.MIN_VALUE;
+        Integer.MIN_VALUE: -2147483648
+        Integer.MAX_VALUE:  2147483647
+        */
         long a=Math.abs((long )dividend);
         long b=Math.abs((long )divisor);
         boolean negative=false; 
