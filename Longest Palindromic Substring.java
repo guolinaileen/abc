@@ -34,7 +34,7 @@ public class Solution {
                 maxL=p[i]; 
             }
         }
-        return original.substring((center-maxL)/2, (center+maxL)/2);
+        return original.substring((center-maxL)/2, (center+maxL)/2); // good method
     }
     String preProcess(String s)
     {
