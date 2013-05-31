@@ -5,6 +5,7 @@ public class Solution {
          int length = s.length();
          int []dp=new int[length+1];
          boolean [][]palin=new boolean[length][length];
+         //dp[i] stores the minimum number of cut
          for(int i = 0; i <= length; i++)
                 dp[i] = length-i;
 
