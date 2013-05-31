@@ -2,11 +2,8 @@ public class Solution {
     public int searchInsert(int[] A, int target) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(A.length==0) return 0; 
-        return search(A, 0, A.length-1, target);
-    }
-    int search(int [] A, int start, int end, int target)
-    {
+        int start=0; 
+        int end=A.length-1; 
         while(start<=end)
         {
             int mid=start+(end-start)/2;
@@ -16,7 +13,7 @@ public class Solution {
                 start=mid+1; 
             }else
             {
-                end=mid-1;
+                end=mid-1; 
             }
         }
         return start; 
