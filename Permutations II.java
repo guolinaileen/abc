@@ -20,6 +20,7 @@ public class Solution {
         for(int i=0; i<num.length; i++)
         {
             if(i!=0 && num[i]==num[i-1] && visited[i-1]) continue; 
+            //check the previous same element, if it has been visited, we move forward, if not, we still can use this element
             if(!visited[i])
             {
                 sublist.add(num[i]);
