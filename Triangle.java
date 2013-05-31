@@ -8,6 +8,7 @@ public class Solution {
         {
             for(int j=0; j<=i; j++)
             {
+                //greedy approach
                 int val=triangle.get(i).get(j)+Math.min(list.get(j), list.get(j+1));
                 list.remove(j);
                 list.add(j, val);
