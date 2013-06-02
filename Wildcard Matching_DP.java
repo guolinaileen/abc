@@ -12,10 +12,13 @@ public class Solution {
     }
     boolean check(String s, String p)
     {
+        // the row is for each char in p
+        // the col is for each char in s
         boolean [][]array=new boolean [2][s.length()+1];
+        //start from the second line, the first line is empty
         int flag=1; 
         array[0][0]=true; 
-        int index=0; 
+        int index=0; //index of p
         while(index<p.length())
         {
             int start=1; 
