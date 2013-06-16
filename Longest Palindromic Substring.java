@@ -2,43 +2,43 @@ public class Solution {
     public String longestPalindrome(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(s.length()==0) return s; 
-        String original=s; 
-        s=preProcess(s);
-        int c=0, l=0, r=0; 
-        /*how many matching characters at the center c */
-        int [] p=new int[s.length()];
-        for(int i=0; i<s.length(); i++)
+        String sNew=preProcess(s);
+        int M=0, R=0; 
+        int [] P=new int[sNew.length()];
+        for(int i=0; i<sNew.length(); i++)
         {
-            int i_prime=c-(i-c); /*i_prime is located at left and i is located at right */
-            if(r>i && i_prime>=0)
+            int i_p=M-(i-M); 
+            if(i_p>=0)
             {
-                if(p[i_prime]<=r-i) p[i]=p[i_prime]; //careful about here: check p[i_prime] before assigning the value
+                if(i<R && i+P[i_p]<=R)
+                {
+                    P[i]=P[i_p];
+                }
             }
-            while(i-p[i]-1>=0 && i+p[i]+1<s.length() &&  s.charAt(i-p[i]-1)==s.charAt(i+p[i]+1))
+            while(i-P[i]-1>=0 && i+P[i]+1<sNew.length() && sNew.charAt(i+P[i]+1)==sNew.charAt(i-P[i]-1))
             {
-                p[i]++; 
+                P[i]++; 
             }
-            if(p[i]+i>r)
+            if(i+P[i]>R)
             {
-                c=i;
-                r=p[i]+i;
+                R=i+P[i]; 
+                M=i;
             }
         }
-        int maxL=0, center=0; 
-        for(int i=0; i<s.length(); i++)
+        int mid=0; 
+        int length=0; 
+        for(int i=0; i<sNew.length(); i++)
         {
-            if(p[i]>maxL)
+            if(P[i]>length)
             {
-                center=i; 
-                maxL=p[i]; 
+                length=P[i]; mid=i; 
             }
         }
-        return original.substring((center-maxL)/2, (center+maxL)/2); // good method
+        return s.substring((mid-length)/2, (mid+length)/2);
     }
     String preProcess(String s)
     {
-        StringBuffer sb=new StringBuffer();
+        StringBuffer sb=new StringBuffer(); 
         for(int i=0; i<s.length(); i++)
         {
             sb.append("#");
@@ -47,5 +47,4 @@ public class Solution {
         sb.append("#");
         return sb.toString(); 
     }
-    
 }
