@@ -1,3 +1,27 @@
+// careful about the boundary case
+
+public class Solution {
+    public boolean isMatch(String s, String p) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(p.length()==0) return s.length()==0; 
+        if(p.length()==1) return ( p.equals(".") && s.length()==1) ||p.equals(s);
+        if(s.length()==0) return p.charAt(1)=='*'&& isMatch(s, p.substring(2));
+        if(p.charAt(1)!='*')
+        {
+            if(p.charAt(0)=='.' || p.charAt(0)==s.charAt(0))
+            {
+                return isMatch(s.substring(1), p.substring(1));
+            }else return false; 
+        }
+        if(isMatch(s, p.substring(2))) return true; 
+        if(s.charAt(0)==p.charAt(0) || p.charAt(0)=='.') return isMatch(s.substring(1), p);
+        return false;
+    }
+
+}
+
+
 public class Solution {
     public boolean isMatch(String s, String p) {
         // Start typing your Java solution below
