@@ -18,6 +18,7 @@ public class Solution {
         }
         for(int i=prevIndx; i<candidates.length; i++)
         {
+            //previous node can be added multiple times
             subResult.add(candidates[i]);
             solve(result, candidates, sum+candidates[i], target, subResult, i);
             subResult.remove(subResult.size()-1);
