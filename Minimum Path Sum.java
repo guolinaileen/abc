@@ -2,28 +2,20 @@ public class Solution {
     public int minPathSum(int[][] grid) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(grid.length==0) return 0; 
-     int [][] arrays=new int [grid.length+1][grid[0].length+1];   
-     
-     return find(grid, arrays,0, 0);
-     
+     int [][] path=new int[grid.length][grid[0].length];
+     return sumPath( grid,  path, grid.length-1, grid[0].length-1); 
     }
-    int find(int [][] grid, int [][] arrays, int m, int n)
+    int sumPath(int [][] grid, int [][] path, int i, int j)
     {
-        if(m==grid.length-1 && n==grid[0].length) return 0; 
-        if(arrays[m][n]!=0) return arrays[m][n];
-        if(m==grid.length-1)
+        if(path[i][j]!=0) return path[i][j];
+        if(i==0 && j==0)
         {
-            arrays[m][n]=grid[m][n]+find(grid, arrays, m, n+1);
-            return arrays[m][n];
+            path[i][j]=grid[i][j]; return path[i][j];
         }
-        if(n==grid[0].length-1)
-        {
-            arrays[m][n]=grid[m][n]+find(grid, arrays,m+1, n);
-            return arrays[m][n];
-        }
-        arrays[m][n]=grid[m][n]+Math.min(find(grid, arrays, m, n+1), find(grid, arrays,m+1, n));
-        return arrays[m][n];
-}
-
+        int c1=Integer.MAX_VALUE, c2=Integer.MAX_VALUE; 
+        if(i>0) c1= sumPath(grid, path, i-1,  j); 
+        if(j>0) c2= sumPath(grid, path, i, j-1); 
+        path[i][j]=Math.min(c1, c2)+ grid[i][j];
+        return path[i][j];
+    }
 }
