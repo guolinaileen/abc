@@ -21,7 +21,7 @@ public class Solution {
         int index=0; //index of p
         while(index<p.length())
         {
-            int start=1; 
+            int start=1; //index of x
             if(p.charAt(index)=='*')
             {
                 array[flag][0]=array[flag==0? 1: 0][0];
